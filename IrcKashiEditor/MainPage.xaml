@@ -4,10 +4,71 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:IrcKashiEditor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:iconPacks="using:MahApps.Metro.IconPacks"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MinHeight="600" MinWidth="800">
     <Grid>
-        <local:MusicPlayer VerticalAlignment="Bottom" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <muxc:MenuBar Grid.Row="0">
+            <muxc:MenuBarItem Title="文件">
+                <MenuFlyoutItem Text="新建歌词"/>
+                <MenuFlyoutSubItem Text="打开...">
+                    <MenuFlyoutItem Text="歌词文件"/>
+                    <MenuFlyoutItem Text="歌曲文件"/>
+                </MenuFlyoutSubItem>
+                <MenuFlyoutItem Text="保存歌词"/>
+                <MenuFlyoutItem Text="退出"/>
+            </muxc:MenuBarItem>
+
+            <muxc:MenuBarItem Title="编辑">
+                <MenuFlyoutItem Text="撤销"/>
+                <MenuFlyoutItem Text="重做"/>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="复制"/>
+                <MenuFlyoutItem Text="剪切"/>
+                <MenuFlyoutItem Text="粘贴"/>
+                <MenuFlyoutItem Text="插入"/>
+                <MenuFlyoutItem Text="删除"/>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="时间替换"/>
+                <MenuFlyoutItem Text="时间排序"/>
+                <MenuFlyoutItem Text="向上移动"/>
+                <MenuFlyoutItem Text="向下移动"/>
+            </muxc:MenuBarItem>
+
+            <muxc:MenuBarItem Title="帮助">
+                <MenuFlyoutItem Text="反馈"/>
+                <MenuFlyoutItem Text="GitHub"/>
+                <MenuFlyoutSeparator />
+                <MenuFlyoutItem Text="关于软件"/>
+            </muxc:MenuBarItem>
+        </muxc:MenuBar>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <Button Margin="0 10 0 0" Template="{Binding Source={StaticResource BaseMenuButton}}">
+                    <SymbolIcon Width="30" Height="30" Symbol="Audio"/>
+                </Button>
+                <Button Margin="0 10 0 0" Template="{Binding Source={StaticResource BaseMenuButton}}">
+                    <SymbolIcon Width="30" Height="30" Symbol="OpenFile"/>
+                </Button>
+                <Button Margin="0 10 0 0" Template="{Binding Source={StaticResource BaseMenuButton}}">
+                    <SymbolIcon Width="30" Height="30" Symbol="Save"/>
+                </Button>
+            </StackPanel>
+            <local:LrcEditor Grid.Row="0" Grid.Column="1"/>
+            <local:MusicPlayer Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" />
+        </Grid>
     </Grid>
 </Page>

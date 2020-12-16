@@ -5,24 +5,63 @@
     xmlns:local="using:IrcKashiEditor"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:iconPacks="using:MahApps.Metro.IconPacks"
-    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    xmlns:controls="using:Windows.UI.Xaml.Controls" 
+    xmlns:iconPacks="using:MahApps.Metro.IconPacks" xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    d:DesignHeight="50"
+    d:DesignHeight="70"
     d:DesignWidth="800"
-    MinHeight="50">
-    <Grid Background="#FF595959">
-        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-            <Button Margin="10 0 0 0" Template="{Binding Source={StaticResource PlayerButton}}"  Click="ChangePlayState">
-                <iconPacks:PackIconMaterial Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="{Binding IconMaterialKind}" />
-            </Button>
-            <Button Margin="0 0 0 0" Template="{Binding Source={StaticResource PlayerButton}}">
-                <iconPacks:PackIconMaterial Width="30" Height="30" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="StopCircleOutline" />
-            </Button>
-            <muxc:DropDownButton>
-                
-            </muxc:DropDownButton>
-        </StackPanel>
+    Height="70">
+    <Grid>
+        <Grid VerticalAlignment="Bottom" Height="50" Background="#FF9B9B9B">
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                <Button Margin="10 0 0 0" Template="{Binding Source={StaticResource PlayerButton}}"  Click="ChangePlayState">
+                    <SymbolIcon Symbol="{Binding CustomSymbolIcon}"/>
+                </Button>
+                <Button Template="{Binding Source={StaticResource PlayerButton}}">
+                    <SymbolIcon Symbol="Stop"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Template="{Binding Source={StaticResource PlayerButton}}">
+                    <SymbolIcon Symbol="Volume" />
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="音量" VerticalAlignment="Center" Margin="0 0 5 0" />
+                                <Slider Width="200" />
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button Margin="0 0 10 0" Template="{Binding Source={StaticResource PlayerButton}}">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEC49;"/>
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="速度" VerticalAlignment="Center" Margin="0 0 5 0" />
+                                <Slider Width="200" Value="1" Maximum="1" Minimum="0.1" StepFrequency="0.1"  />
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid>
+            <Grid VerticalAlignment="Bottom" Height="50" Margin="100 0">
+                <Button VerticalAlignment="Center" HorizontalAlignment="Left" Template="{Binding Source={StaticResource PlayerButton}}">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB9E;"/>
+                </Button>
+                <Slider VerticalAlignment="Center" Margin="50 0 50 0"></Slider>
+                <Button VerticalAlignment="Center" HorizontalAlignment="Right" Template="{Binding Source={StaticResource PlayerButton}}">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xEB9D;"/>
+                </Button>
+            </Grid>
+            <Grid VerticalAlignment="Top" Height="20">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Text="00:00.00"></TextBlock>
+                    <TextBlock Margin="5 0 5 0" VerticalAlignment="Center" Text="/"></TextBlock>
+                    <TextBlock VerticalAlignment="Center" Text="00:00.00"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </UserControl>

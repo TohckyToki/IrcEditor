@@ -5,24 +5,48 @@
     xmlns:extensions="using:Microsoft.Toolkit.Uwp.UI.Extensions">
 
     <Application.Resources>
-        <ControlTemplate x:Key="PlayerButton" TargetType="Button">
-            <Border extensions:Mouse.Cursor="Hand">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal" />
-                        <VisualState x:Name="CheckedPointerOver" />
-                        <VisualState x:Name="PointerOver">
-                            <VisualState.Setters>
-                                <Setter Target="ToggleButtonContent.Fill" Value="#FFE3E3E3" />
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-                <Grid Background="Transparent">
-                    <Ellipse x:Name="ToggleButtonContent" Width="40" Height="40" Fill="Transparent"></Ellipse>
-                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
-                </Grid>
-            </Border>
-        </ControlTemplate>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+            <ControlTemplate x:Key="PlayerButton" TargetType="Button">
+                <Border extensions:Mouse.Cursor="Hand">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Target="ToggleButtonContent.Fill" Value="#FFE3E3E3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Grid Background="Transparent">
+                        <Ellipse x:Name="ToggleButtonContent" Width="40" Height="40" Fill="Transparent"></Ellipse>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+            <ControlTemplate x:Key="BaseMenuButton" TargetType="Button">
+                <Border extensions:Mouse.Cursor="Hand">
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="PointerOver">
+                                <VisualState.Setters>
+                                    <Setter Target="ToggleButtonContent.Fill" Value="#FFE3E3E3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                    <Grid Background="Transparent">
+                        <Rectangle x:Name="ToggleButtonContent" Width="40" Height="40" Fill="Transparent"></Rectangle>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"></ContentPresenter>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+            <Style x:Key="NoBorderTextBox" TargetType="TextBox">
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

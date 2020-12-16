@@ -12,7 +12,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using MahApps.Metro.IconPacks;
 using System.ComponentModel;
 using System.Windows.Input;
 
@@ -26,13 +25,13 @@ namespace IrcKashiEditor {
             get => _isPuase;
             set {
                 _isPuase = value;
-                IconMaterialKind = value ? PackIconMaterialKind.PauseCircleOutline : PackIconMaterialKind.PlayCircleOutline;
+                CustomSymbolIcon = value ? Symbol.Pause : Symbol.Play;
                 PropertyChanged(this, new PropertyChangedEventArgs("IsPause"));
-                PropertyChanged(this, new PropertyChangedEventArgs("IconMaterialKind"));
+                PropertyChanged(this, new PropertyChangedEventArgs("CustomSymbolIcon"));
             }
         }
 
-        public PackIconMaterialKind IconMaterialKind { get; private set; } = PackIconMaterialKind.PlayCircleOutline;
+        public Symbol CustomSymbolIcon { get; private set; } = Symbol.Play;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
